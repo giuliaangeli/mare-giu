@@ -26,7 +26,7 @@ class DetailView(generic.DetailView):
         """
         Excludes any questions that aren't published yet.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now(), choice__isnull=False)
+        return Question.objects.filter(pub_date__lte=timezone.now(), choice__isnull=False).distinct()
 
 
 class ResultsView(generic.DetailView):
